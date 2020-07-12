@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaUsuario extends Migration
+class CrearTablaLibro extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CrearTablaUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('libros', function (Blueprint $table) {
             $table->id();
-            $table->string('user',50);
-            $table->string('password', 100);
-            $table->string('nombre', 50);
+            $table->string('titulo', 100);
+            $table->string('isbn', 30);
+            $table->string('autor', 100);
+            $table->unsignedTinyInteger('cantidad');
+            $table->string('editorial', 100)->nullable();
+            $table->string('foto', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +33,6 @@ class CrearTablaUsuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('libros');
     }
 }

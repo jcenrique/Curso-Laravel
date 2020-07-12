@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaUsuario extends Migration
+class CrearTablaRol extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CrearTablaUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('rols', function (Blueprint $table) {
             $table->id();
-            $table->string('user',50);
-            $table->string('password', 100);
             $table->string('nombre', 50);
+            
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,11 +24,11 @@ class CrearTablaUsuario extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *s
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('rols');
     }
 }

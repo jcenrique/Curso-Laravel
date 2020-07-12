@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaUsuario extends Migration
+class CrearTablaUsuarioRol extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CrearTablaUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('usuario_rol', function (Blueprint $table) {
             $table->id();
-            $table->string('user',50);
-            $table->string('password', 100);
-            $table->string('nombre', 50);
+            
+            $table->foreignId('rol_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+          
+            $table->foreignId('user_id')->constrained()->onDelete('restrict')->onUpdate('restrict');
+            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +32,6 @@ class CrearTablaUsuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('usuario_rol');
     }
 }
