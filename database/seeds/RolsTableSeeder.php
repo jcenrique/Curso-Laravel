@@ -18,7 +18,7 @@ class RolsTableSeeder extends Seeder
             'editor',
             'supervisor'
         ];
-        foreach ($rols as $key => $value) {
+        foreach ($rols as $key => $value)  {
             DB::table('rols')->insert([
                 'nombre' => $value,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
